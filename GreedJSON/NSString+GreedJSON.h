@@ -11,9 +11,9 @@
 @interface NSString (GreedJSON)
 
 /**
- *  转成NSDictionary 或者 NSArray
+ *  format to NSDictionary or NSArray
  *
- *  @return NSDictionary 或者 NSArray
+ *  @return NSDictionary or NSArray
  */
 - (__kindof NSObject*)toObject;
 
