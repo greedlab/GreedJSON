@@ -28,6 +28,7 @@ pod 'GreedJSON'
 ```
 # Release Notes
 * 0.0.1 first version
+* 0.0.2 change method toObject to gr_object
 
 # LICENSE
 MIT
