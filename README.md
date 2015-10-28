@@ -28,5 +28,6 @@ pod 'GreedJSON'
 ```
 # Release Notes
 * 0.0.1 first version
+
 # LICENSE
 MIT
