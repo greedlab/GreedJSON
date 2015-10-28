@@ -1,0 +1,14 @@
+PODS:
+  - GreedJSON (0.0.1)
+
+DEPENDENCIES:
+  - GreedJSON (from `./`)
+
+EXTERNAL SOURCES:
+  GreedJSON:
+    :path: ./
+
+SPEC CHECKSUMS:
+  GreedJSON: acd2352b39971936b0d2ba2f6f6bd474eea62f99
+
+COCOAPODS: 0.39.0
