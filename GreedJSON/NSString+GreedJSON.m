@@ -10,7 +10,7 @@
 
 @implementation NSString (GreedJSON)
 
-- (id)toObject
+- (id)gr_object
 {
     if (self.length == 0) {
         return nil;
@@ -26,7 +26,7 @@
     return object;
 }
 
-- (id)toObjectWithOptions:(NSJSONReadingOptions)options
+- (id)gr_objectWithOptions:(NSJSONReadingOptions)options
 {
     if (self.length == 0) {
         return nil;

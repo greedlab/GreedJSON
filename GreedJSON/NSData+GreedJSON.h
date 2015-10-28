@@ -15,8 +15,8 @@
  *
  *  @return NSDictionary or NSArray
  */
-- (__kindof NSObject*)toObject;
+- (__kindof NSObject*)gr_object;
 
-- (__kindof NSObject*)toObjectWithOptions:(NSJSONReadingOptions)options;
+- (__kindof NSObject*)gr_objectWithOptions:(NSJSONReadingOptions)options;
 
 @end

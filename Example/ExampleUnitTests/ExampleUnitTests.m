@@ -42,7 +42,7 @@
     NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://api.github.com/search/repositories?q=GreedJSON"]];
     {
         // test NSData to NSObject
-        NSObject *object = [data toObject];
+        NSObject *object = [data gr_object];
         NSLog(@"NSData to NSObject:%@",object);
         
         if ([object isKindOfClass:[NSDictionary class]]) {
@@ -68,7 +68,7 @@
     {
         NSString *string =  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         // test NSString to object
-        NSObject *object = [string toObject];
+        NSObject *object = [string gr_object];
         NSLog(@"NSString to object:%@",object);
     }
 }

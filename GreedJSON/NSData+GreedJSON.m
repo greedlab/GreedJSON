@@ -10,7 +10,7 @@
 
 @implementation NSData (GreedJSON)
 
-- (id)toObject
+- (id)gr_object
 {
     NSError *error;
 
@@ -22,7 +22,7 @@
     return object;
 }
 
-- (id)toObjectWithOptions:(NSJSONReadingOptions)options
+- (id)gr_objectWithOptions:(NSJSONReadingOptions)options
 {
     NSError *error;
     id object = [NSJSONSerialization JSONObjectWithData:self options:options error:&error];
