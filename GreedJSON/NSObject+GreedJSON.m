@@ -103,9 +103,6 @@
         
         id value = [dictionary valueForKey:dictKey];
         if (value == [NSNull null] || value == nil) {
-            if ([aClass gr_useNullProperty]) {
-                [self setValue:[NSNull null] forKey:key];
-            }
             return;
         }
         
@@ -169,12 +166,12 @@
             return;
         }
         id value = [self valueForKey:key];
+        NSString *dictKey= nil;
+        dictKey = [replacedPropertyNames objectForKey:key];
+        if (!dictKey) {
+            dictKey = key;
+        }
         if (value) {
-            NSString *dictKey= nil;
-            dictKey = [replacedPropertyNames objectForKey:key];
-            if (!dictKey) {
-                dictKey = key;
-            }
             if ([value isKindOfClass:[NSArray class]]) {
                 NSUInteger count = ((NSArray*)value).count;
                 if (count) {
@@ -188,6 +185,10 @@
                 [dic setObject:value forKey:dictKey];
             } else {
                 [dic setObject:[value gr_dictionary] forKey:dictKey];
+            }
+        } else {
+            if ([aClass gr_useNullProperty]) {
+                [dic setObject:[NSNull null] forKey:dictKey];
             }
         }
     }];
