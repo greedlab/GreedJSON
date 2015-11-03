@@ -110,7 +110,7 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
 
 #pragma mark - Foundation
 
-+ (NSSet *)gr_foundationClasses
++ (NSSet *)foundationClasses
 {
     if (!__grFoundationClasses) {
         __grFoundationClasses = [NSSet setWithObjects:
@@ -127,10 +127,10 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
     return __grFoundationClasses;
 }
 
-+ (BOOL)gr_isClassFromFoundation:(Class)aClass
++ (BOOL)isClassFromFoundation:(Class)aClass
 {
     __block BOOL result = NO;
-    [[self gr_foundationClasses] enumerateObjectsUsingBlock:^(Class foundationClass, BOOL *stop) {
+    [[self foundationClasses] enumerateObjectsUsingBlock:^(Class foundationClass, BOOL *stop) {
         if ([aClass isSubclassOfClass:foundationClass]) {
             result = YES;
             *stop = YES;

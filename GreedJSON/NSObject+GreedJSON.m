@@ -14,7 +14,7 @@
 
 #pragma mark - property getter
 
-- (NSArray*)propertyNames
+- (NSArray*)gr_propertyNames
 {
     return [GRJSONHelper propertyNames:[self class]];
 }
@@ -70,7 +70,7 @@
 
 - (BOOL)gr_isFromFoundation
 {
-    return [GRJSONHelper gr_isClassFromFoundation:[self class]];
+    return [GRJSONHelper isClassFromFoundation:[self class]];
 }
 
 #pragma mark - parse

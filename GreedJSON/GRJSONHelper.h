@@ -14,7 +14,7 @@
 
 #pragma mark - Foundation
 
-+ (NSSet *)gr_foundationClasses;
-+ (BOOL)gr_isClassFromFoundation:(Class)aClass;
++ (NSSet *)foundationClasses;
++ (BOOL)isClassFromFoundation:(Class)aClass;
 
 @end

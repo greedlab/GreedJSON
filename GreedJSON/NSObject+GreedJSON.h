@@ -12,7 +12,7 @@
 
 #pragma mark - property getter
 
-- (NSArray*)propertyNames;
+- (NSArray*)gr_propertyNames;
 
 #pragma mark - Property init
 
