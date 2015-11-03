@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "GreedJSON"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "parse and format JSON for ios "
   s.description  = %{Format NSDictionary,NSArray and NSData to JSONString,or reverse }
   s.homepage     = "https://github.com/greedlab/GreedJSON"
