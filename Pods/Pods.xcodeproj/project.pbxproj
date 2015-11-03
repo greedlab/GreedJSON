@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		14066F3F45570E96C37243E3313F8BE2 /* GreedJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = CBD64BB28D1B2F18486AD82B8C4426DF /* GreedJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23079226C31803041D70EC801258CB81 /* NSData+GreedJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 4908C1D1E5EBB76496469DB297FAC09F /* NSData+GreedJSON.m */; };
+		2873615C1BE861B5005C6A5F /* NSObject+GreedJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 2873615A1BE861B5005C6A5F /* NSObject+GreedJSON.h */; };
+		2873615D1BE861B5005C6A5F /* NSObject+GreedJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 2873615B1BE861B5005C6A5F /* NSObject+GreedJSON.m */; };
+		287361601BE865AD005C6A5F /* GRJSONHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2873615E1BE865AD005C6A5F /* GRJSONHelper.h */; };
+		287361611BE865AD005C6A5F /* GRJSONHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2873615F1BE865AD005C6A5F /* GRJSONHelper.m */; };
 		456907AC0252BCB7DB8926923905C5B4 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */; };
 		58AC6ACBDBEB18CF77D8FF1596522261 /* NSDictionary+GreedJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 70BD03A004A74A100B5E93824BF84659 /* NSDictionary+GreedJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F24FBF99D91266304B41F6760347228 /* NSDictionary+GreedJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8B0AFBE16E12C216891980E87495CFC /* NSDictionary+GreedJSON.m */; };
@@ -35,6 +39,10 @@
 /* Begin PBXFileReference section */
 		10834806BD7B412BC24F347361FA2C8E /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
 		272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		2873615A1BE861B5005C6A5F /* NSObject+GreedJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GreedJSON.h"; sourceTree = "<group>"; };
+		2873615B1BE861B5005C6A5F /* NSObject+GreedJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GreedJSON.m"; sourceTree = "<group>"; };
+		2873615E1BE865AD005C6A5F /* GRJSONHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRJSONHelper.h; sourceTree = "<group>"; };
+		2873615F1BE865AD005C6A5F /* GRJSONHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRJSONHelper.m; sourceTree = "<group>"; };
 		302FC5016278A6B44B561A5E15B24479 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		35650C8E64842549D090C6B18537D393 /* NSString+GreedJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+GreedJSON.h"; sourceTree = "<group>"; };
 		37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -90,12 +98,16 @@
 			isa = PBXGroup;
 			children = (
 				CBD64BB28D1B2F18486AD82B8C4426DF /* GreedJSON.h */,
+				2873615E1BE865AD005C6A5F /* GRJSONHelper.h */,
+				2873615F1BE865AD005C6A5F /* GRJSONHelper.m */,
 				42229D3BC7AF01D5559FE3134F3514EA /* NSArray+GreedJSON.h */,
 				AEBC432F9B7A100A4D1A3670429A8CF7 /* NSArray+GreedJSON.m */,
 				7BA4B3C8779177EB9773E22CBA5961C6 /* NSData+GreedJSON.h */,
 				4908C1D1E5EBB76496469DB297FAC09F /* NSData+GreedJSON.m */,
 				70BD03A004A74A100B5E93824BF84659 /* NSDictionary+GreedJSON.h */,
 				D8B0AFBE16E12C216891980E87495CFC /* NSDictionary+GreedJSON.m */,
+				2873615A1BE861B5005C6A5F /* NSObject+GreedJSON.h */,
+				2873615B1BE861B5005C6A5F /* NSObject+GreedJSON.m */,
 				35650C8E64842549D090C6B18537D393 /* NSString+GreedJSON.h */,
 				95F3EC5C201D04795384E5AB517769A3 /* NSString+GreedJSON.m */,
 			);
@@ -189,8 +201,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2873615C1BE861B5005C6A5F /* NSObject+GreedJSON.h in Headers */,
 				14066F3F45570E96C37243E3313F8BE2 /* GreedJSON.h in Headers */,
 				63623AB03EAF8B20A7221AA39A41E5BA /* NSArray+GreedJSON.h in Headers */,
+				287361601BE865AD005C6A5F /* GRJSONHelper.h in Headers */,
 				CC8FCC70B3FB91ED835FFAF23304ECCF /* NSData+GreedJSON.h in Headers */,
 				58AC6ACBDBEB18CF77D8FF1596522261 /* NSDictionary+GreedJSON.h in Headers */,
 				A15FBB91CBC1D97488A91851C368B025 /* NSString+GreedJSON.h in Headers */,
@@ -240,8 +254,10 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GR;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = GreedLab;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -266,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				287361611BE865AD005C6A5F /* GRJSONHelper.m in Sources */,
 				936D844E80FF7489875869BD6DF00142 /* GreedJSON-dummy.m in Sources */,
+				2873615D1BE861B5005C6A5F /* NSObject+GreedJSON.m in Sources */,
 				84268136DFACC156F7F4E7E1EE3B6AA1 /* NSArray+GreedJSON.m in Sources */,
 				23079226C31803041D70EC801258CB81 /* NSData+GreedJSON.m in Sources */,
 				5F24FBF99D91266304B41F6760347228 /* NSDictionary+GreedJSON.m in Sources */,
