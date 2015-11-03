@@ -1,5 +1,5 @@
 # GreedJSON [![Build Status](https://travis-ci.org/greedlab/GreedJSON.svg?branch=master)](https://travis-ci.org/greedlab/GreedJSON)
-Format JSON based on NSJSONSerialization
+parse and format JSON for ios， based on NSJSONSerialization
 # Installation
 pod 'GreedJSON'
 # Usage
@@ -43,6 +43,7 @@ pod 'GreedJSON'
 * 0.0.1 first version
 * 0.0.2 change method toObject to gr_object
 * 0.0.3 add model to NSDictionary and NSDictionary to model
+* 0.0.4 update struct
 
 # LICENSE
 MIT
