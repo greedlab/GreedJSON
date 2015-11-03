@@ -24,6 +24,9 @@ static const char *property_getTypeName(objc_property_t property) {
 	return "@";
 }
 
+static NSSet *__grFoundationClasses;
+
+
 @implementation GRJSONHelper : NSObject
 
 static NSMutableDictionary *propertyListByClass;
@@ -102,6 +105,38 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
     free(properties);
     //this will support traversing the inheritance chain
 	return [self propertyClassForPropertyName:propertyName ofClass:class_getSuperclass(klass)];
+}
+
+
+#pragma mark - Foundation
+
++ (NSSet *)gr_foundationClasses
+{
+    if (!__grFoundationClasses) {
+        __grFoundationClasses = [NSSet setWithObjects:
+                                 [NSURL class],
+                                 [NSDate class],
+                                 [NSValue class],
+                                 [NSData class],
+                                 [NSError class],
+                                 [NSArray class],
+                                 [NSDictionary class],
+                                 [NSString class],
+                                 [NSAttributedString class], nil];
+    }
+    return __grFoundationClasses;
+}
+
++ (BOOL)gr_isClassFromFoundation:(Class)aClass
+{
+    __block BOOL result = NO;
+    [[self gr_foundationClasses] enumerateObjectsUsingBlock:^(Class foundationClass, BOOL *stop) {
+        if ([aClass isSubclassOfClass:foundationClass]) {
+            result = YES;
+            *stop = YES;
+        }
+    }];
+    return result;
 }
 
 @end

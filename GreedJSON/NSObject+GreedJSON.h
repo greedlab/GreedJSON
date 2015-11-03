@@ -10,7 +10,11 @@
 
 @interface NSObject (GreedJSON)
 
-#pragma mark - Property
+#pragma mark - property getter
+
+- (NSArray*)propertyNames;
+
+#pragma mark - Property init
 
 /**
  *  default NO
@@ -32,7 +36,6 @@
 
 #pragma mark - Foundation
 
-+ (NSSet *)gr_foundationClasses;
 - (BOOL)gr_isFromFoundation;
 
 #pragma mark - parse

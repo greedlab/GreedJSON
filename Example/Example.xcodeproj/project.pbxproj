@@ -15,6 +15,7 @@
 		2845CA5C1BE0729A003D7580 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2845CA5A1BE0729A003D7580 /* LaunchScreen.storyboard */; };
 		2845CA7A1BE07AD8003D7580 /* ExampleUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2845CA791BE07AD8003D7580 /* ExampleUnitTests.m */; };
 		287361681BE8A141005C6A5F /* GRTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 287361671BE8A141005C6A5F /* GRTestModel.m */; };
+		2873616B1BE8A8AE005C6A5F /* GRBaseTestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2873616A1BE8A8AE005C6A5F /* GRBaseTestModel.m */; };
 		35DB8511E912D0FE5DCEC52C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A022C1C0DEA9192E662E9F /* libPods.a */; };
 		C1808C178A5F65D23F1D92CF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A022C1C0DEA9192E662E9F /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,8 @@
 		2845CA7B1BE07AD8003D7580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		287361661BE8A141005C6A5F /* GRTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRTestModel.h; sourceTree = "<group>"; };
 		287361671BE8A141005C6A5F /* GRTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRTestModel.m; sourceTree = "<group>"; };
+		287361691BE8A8AE005C6A5F /* GRBaseTestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GRBaseTestModel.h; sourceTree = "<group>"; };
+		2873616A1BE8A8AE005C6A5F /* GRBaseTestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GRBaseTestModel.m; sourceTree = "<group>"; };
 		79FE5C78FF6A1E8E581D2A0B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		84B4E05CF04BC8FBCF95FC49 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A8A022C1C0DEA9192E662E9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +141,8 @@
 				2845CA7B1BE07AD8003D7580 /* Info.plist */,
 				287361661BE8A141005C6A5F /* GRTestModel.h */,
 				287361671BE8A141005C6A5F /* GRTestModel.m */,
+				287361691BE8A8AE005C6A5F /* GRBaseTestModel.h */,
+				2873616A1BE8A8AE005C6A5F /* GRBaseTestModel.m */,
 			);
 			path = ExampleUnitTests;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			files = (
 				287361681BE8A141005C6A5F /* GRTestModel.m in Sources */,
 				2845CA7A1BE07AD8003D7580 /* ExampleUnitTests.m in Sources */,
+				2873616B1BE8A8AE005C6A5F /* GRBaseTestModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

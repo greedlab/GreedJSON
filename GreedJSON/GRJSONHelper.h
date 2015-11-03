@@ -12,4 +12,9 @@
 + (Class)propertyClassForPropertyName:(NSString *)propertyName ofClass:(Class)klass;
 + (NSArray *)propertyNames:(Class)klass;
 
+#pragma mark - Foundation
+
++ (NSSet *)gr_foundationClasses;
++ (BOOL)gr_isClassFromFoundation:(Class)aClass;
+
 @end

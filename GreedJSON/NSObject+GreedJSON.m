@@ -7,13 +7,19 @@
 //
 
 #import "NSObject+GreedJSON.h"
+#import <objc/runtime.h>
 #import "GRJSONHelper.h"
-
-static NSSet *__grFoundationClasses;
 
 @implementation NSObject (GreedJSON)
 
-#pragma mark - Property
+#pragma mark - property getter
+
+- (NSArray*)propertyNames
+{
+    return [GRJSONHelper propertyNames:[self class]];
+}
+
+#pragma mark - Property init
 
 + (BOOL)gr_useNullProperty
 {
@@ -22,58 +28,49 @@ static NSSet *__grFoundationClasses;
 
 + (NSArray*)gr_ignoredPropertyNames
 {
-    return nil;
+    NSArray *array = nil;
+    Class superClass = class_getSuperclass([self class]);
+    if (superClass && superClass != [NSObject class]) {
+        array = [superClass gr_ignoredPropertyNames];
+    }
+    return array;
 }
 
 + (NSArray*)gr_allowedPropertyNames
 {
-    return nil;
+    NSArray *array = nil;
+    Class superClass = class_getSuperclass([self class]);
+    if (superClass && superClass != [NSObject class]) {
+        array = [superClass gr_allowedPropertyNames];
+    }
+    return array;
 }
 
 + (NSDictionary*)gr_replacedPropertyNames
 {
-    return nil;
+    NSDictionary *dictionary = nil;
+    Class superClass = class_getSuperclass([self class]);
+    if (superClass && superClass != [NSObject class]) {
+        dictionary = [superClass gr_replacedPropertyNames];
+    }
+    return dictionary;
 }
 
 + (NSDictionary *)gr_classInArray
 {
-    return nil;
+    NSDictionary *dictionary = nil;
+    Class superClass = class_getSuperclass([self class]);
+    if (superClass && superClass != [NSObject class]) {
+        dictionary = [superClass gr_classInArray];
+    }
+    return dictionary;
 }
 
 #pragma mark - Foundation
 
-+ (NSSet *)gr_foundationClasses
-{
-    if (!__grFoundationClasses) {
-        __grFoundationClasses = [NSSet setWithObjects:
-                                 [NSURL class],
-                                 [NSDate class],
-                                 [NSValue class],
-                                 [NSData class],
-                                 [NSError class],
-                                 [NSArray class],
-                                 [NSDictionary class],
-                                 [NSString class],
-                                 [NSAttributedString class], nil];
-    }
-    return __grFoundationClasses;
-}
-
-+ (BOOL)gr_isFromFoundationWithClass:(Class)class
-{
-    __block BOOL result = NO;
-    [[[NSObject class] gr_foundationClasses] enumerateObjectsUsingBlock:^(Class foundationClass, BOOL *stop) {
-        if ([class isSubclassOfClass:foundationClass]) {
-            result = YES;
-            *stop = YES;
-        }
-    }];
-    return result;
-}
-
 - (BOOL)gr_isFromFoundation
 {
-    return [[self class] gr_isFromFoundationWithClass:[self class]];
+    return [GRJSONHelper gr_isClassFromFoundation:[self class]];
 }
 
 #pragma mark - parse

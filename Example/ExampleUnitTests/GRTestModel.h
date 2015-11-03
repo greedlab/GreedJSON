@@ -7,8 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GRBaseTestModel.h"
 
-@interface GRTestModel : NSObject
+
+@interface GRTestModel : GRBaseTestModel
 
 @property(nonatomic,strong)NSString *key0;
 @property(nonatomic,readonly)NSString *key1;
