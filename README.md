@@ -44,6 +44,7 @@ pod 'GreedJSON'
 * 0.0.2 change method toObject to gr_object
 * 0.0.3 add model to NSDictionary and NSDictionary to model
 * 0.0.4 update struct
+* 0.0.4 change method to propertyNames to gr_propertyNames
 
 # LICENSE
 MIT
