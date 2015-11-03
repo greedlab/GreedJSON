@@ -3,7 +3,7 @@
 //  Pods
 //
 //  Created by Bell on 15/10/28.
-//
+//  Copyright (c) 2015年 GreedLab. All rights reserved.
 //
 
 #ifndef GreedJSON_h
@@ -14,5 +14,7 @@
 #import "NSData+GreedJSON.h"
 #import "NSArray+GreedJSON.h"
 
+#import "GRJSONHelper.h"
+#import "NSObject+GreedJSON.h"
 
 #endif /* GreedJSON_h */

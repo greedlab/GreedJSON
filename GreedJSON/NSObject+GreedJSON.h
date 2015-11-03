@@ -10,7 +10,7 @@
 
 @interface NSObject (GreedJSON)
 
-#pragma mark - Property Names
+#pragma mark - Property
 
 /**
  *  default NO
@@ -18,9 +18,16 @@
  *  @return whether use [NSNull null] to replace nil
  */
 + (BOOL)gr_useNullProperty;
+
 + (NSArray*)gr_ignoredPropertyNames;
 + (NSArray*)gr_allowedPropertyNames;
+
+/**
+ *  @{propertyName:dictionaryKey}
+ *
+ */
 + (NSDictionary*)gr_replacedPropertyNames;
+
 + (NSDictionary *)gr_classInArray;
 
 #pragma mark - Foundation
@@ -30,8 +37,14 @@
 
 #pragma mark - parse
 
+/**
+ *  update Model with NSDictionary
+ */
 - (instancetype)gr_setDictionary:(NSDictionary*)dictionary;
 
+/**
+ *  NSDictionary to Model
+ */
 + (id)gr_objectFromDictionary:(NSDictionary*)dictionary;
 
 /**

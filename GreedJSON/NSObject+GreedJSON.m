@@ -13,7 +13,7 @@ static NSSet *__grFoundationClasses;
 
 @implementation NSObject (GreedJSON)
 
-#pragma mark - Property Names
+#pragma mark - Property
 
 + (BOOL)gr_useNullProperty
 {
@@ -32,7 +32,6 @@ static NSSet *__grFoundationClasses;
 
 + (NSDictionary*)gr_replacedPropertyNames
 {
-    // @{propertyName:dictionaryKey}
     return nil;
 }
 

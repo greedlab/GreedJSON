@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "GreedJSON.h"
+#import "GRTestModel.h"
 
 @interface ExampleUnitTests : XCTestCase
 
@@ -71,6 +72,22 @@
         NSObject *object = [string gr_object];
         NSLog(@"NSString to object:%@",object);
     }
+}
+
+- (void)testModel
+{
+    GRTestModel *model = [[GRTestModel alloc] init];
+    [model setKey0:@"key0"];
+    [model setKey2:[NSArray arrayWithObjects:[[GRTestModel alloc] init], nil]];
+    [model setKey3:@"key3"];
+    [model setKey4:@"key4"];
+    [model setKey5:5];
+    [model setKey6:@"key6"];
+    NSDictionary *dictionary = [model gr_dictionary];
+    NSLog(@"model to dictionary:%@",dictionary);
+    
+    GRTestModel *resultMode = [GRTestModel gr_objectFromDictionary:dictionary];
+    
 }
 
 @end
