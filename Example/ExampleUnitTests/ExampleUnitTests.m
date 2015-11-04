@@ -40,38 +40,38 @@
 
 - (void)testJSON
 {
-//    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://api.github.com/search/repositories?q=GreedJSON"]];
-//    {
-//        // test NSData to NSObject
-//        NSObject *object = [data gr_object];
-//        NSLog(@"NSData to NSObject:%@",object);
-//        
-//        if ([object isKindOfClass:[NSDictionary class]]) {
-//            
-//            // test NSDictionary to NSString
-//            NSDictionary *dictionary = (NSDictionary*)object;
-//            NSString *string = [dictionary gr_JSONString];
-//            NSLog(@"NSDictionary to NSString:%@",string);
-//            
-//            // test NSArray to NSString
-//            NSArray *items = [dictionary objectForKey:@"items"];
-//            if (items && [items isKindOfClass:[NSArray class]]) {
-//                NSString *string = [items gr_JSONString];
-//                NSLog(@"NSArray to NSString:%@",string);
-//            }
-//        } else if ([object isKindOfClass:[NSArray class]]) {
-//            // test NSArray to NSString
-//            NSString *string = [(NSArray*)object gr_JSONString];
-//            NSLog(@"NSArray to NSString:%@",string);
-//        }
-//    }
-//    
-//    {
-//        NSString *string =  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        // test NSString to object
-//        NSObject *object = [string gr_object];
-//        NSLog(@"NSString to object:%@",object);
-//    }
+    NSData* data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://api.github.com/search/repositories?q=GreedJSON"]];
+    {
+        // test NSData to NSObject
+        NSObject *object = [data gr_object];
+        NSLog(@"NSData to NSObject:%@",object);
+        
+        if ([object isKindOfClass:[NSDictionary class]]) {
+            
+            // test NSDictionary to NSString
+            NSDictionary *dictionary = (NSDictionary*)object;
+            NSString *string = [dictionary gr_JSONString];
+            NSLog(@"NSDictionary to NSString:%@",string);
+            
+            // test NSArray to NSString
+            NSArray *items = [dictionary objectForKey:@"items"];
+            if (items && [items isKindOfClass:[NSArray class]]) {
+                NSString *string = [items gr_JSONString];
+                NSLog(@"NSArray to NSString:%@",string);
+            }
+        } else if ([object isKindOfClass:[NSArray class]]) {
+            // test NSArray to NSString
+            NSString *string = [(NSArray*)object gr_JSONString];
+            NSLog(@"NSArray to NSString:%@",string);
+        }
+    }
+    
+    {
+        NSString *string =  [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        // test NSString to object
+        NSObject *object = [string gr_object];
+        NSLog(@"NSString to object:%@",object);
+    }
 }
 
 - (void)testModel

@@ -7,6 +7,7 @@
 //
 
 #import "GRBaseTestModel.h"
+#import "NSObject+GreedJSON.h"
 
 @implementation GRBaseTestModel
 
@@ -22,7 +23,9 @@
 
 + (NSArray*)gr_ignoredPropertyNames
 {
-    return @[@"base0"];
+    NSMutableArray *array = [[self gr_propertyNames] mutableCopy];
+    [array removeObject:@"base1"];
+    return array;
 }
 
 @end

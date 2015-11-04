@@ -29,15 +29,7 @@
 
 + (NSArray*)gr_ignoredPropertyNames
 {
-    Class superClass = class_getSuperclass([self class]);
-    NSArray *array = [superClass gr_ignoredPropertyNames];
-    return [array arrayByAddingObjectsFromArray:@[@"key0"]];
-}
-
-+ (NSArray*)gr_allowedPropertyNames
-{
-    Class superClass = class_getSuperclass([self class]);
-    return [superClass gr_allowedPropertyNames];
+    return @[@"key0"];
 }
 
 + (NSDictionary*)gr_replacedPropertyNames
