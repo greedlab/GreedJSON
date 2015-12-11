@@ -134,8 +134,9 @@
                     [childObjects addObject:obj];
                 }
             }];
-            
-            [self setValue:childObjects forKey:key];
+            if (childObjects.count) {
+                [self setValue:childObjects forKey:key];
+            }
         } else {
             // handle all others
             [self setValue:value forKey:key];
