@@ -45,6 +45,7 @@ pod 'GreedJSON'
 * 0.0.3 add model to NSDictionary and NSDictionary to model
 * 0.0.5 change method to propertyNames to gr_propertyNames
 * 0.0.8 delete gr_allowedPropertyNames and fix some bug
+* 0.0.9 set value to ni if json string is '[]',because empty will be formated to '[]' in php
 
 # LICENSE
 MIT
