@@ -113,6 +113,10 @@
         }
         
         if ([value isKindOfClass:[NSDictionary class]]) { // handle dictionary
+            NSDictionary *dictionary = (NSDictionary*)value;
+            if (dictionary.count == 0) {
+                return;
+            }
             Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
             if (klass == [NSDictionary class]) {
                 [self setValue:value forKey:key];
@@ -120,15 +124,25 @@
                 [self setValue:[[klass class] gr_objectFromDictionary:value] forKey:key];
             }
         } else if ([value isKindOfClass:[NSArray class]]) { // handle array
-            NSMutableArray *childObjects = [NSMutableArray arrayWithCapacity:[(NSArray*)value count]];
-            [value enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
-                    Class arrayItemClass = [[self gr_allClassInArray] objectForKey:key];
-                    if (!arrayItemClass || arrayItemClass == [NSDictionary class]) {
-                        [childObjects addObject:obj];
-                    } else {
-                        NSObject *child = [[arrayItemClass class] gr_objectFromDictionary:obj];
-                        [childObjects addObject:child];
+            NSArray *array = (NSArray*)value;
+            NSMutableArray *childObjects = [[NSMutableArray alloc] init];
+            [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                Class bClass = [obj class];
+                if ([bClass isSubclassOfClass:[NSDictionary class]]) {
+                    NSDictionary *dictionary = (NSDictionary*)obj;
+                    if (dictionary.count) {
+                        Class arrayItemClass = [[self gr_allClassInArray] objectForKey:key];
+                        if (!arrayItemClass || arrayItemClass == [NSDictionary class]) {
+                            [childObjects addObject:obj];
+                        } else {
+                            NSObject *child = [[arrayItemClass class] gr_objectFromDictionary:obj];
+                            [childObjects addObject:child];
+                        }
+                    }
+                } else if ([bClass isSubclassOfClass:[NSArray class]]) {
+                    NSArray *array = (NSArray*)obj;
+                    if (array.count) {
+                        [childObjects addObject:array];
                     }
                 } else {
                     [childObjects addObject:obj];
@@ -200,5 +214,6 @@
 }
 
 #pragma mark - private
+
 
 @end
