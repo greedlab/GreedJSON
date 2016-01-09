@@ -151,8 +151,23 @@
             if (childObjects.count) {
                 [self setValue:childObjects forKey:key];
             }
+        } else if ([value isKindOfClass:[NSNumber class]])   {
+            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
+            if (klass == [NSString class]) {
+                // if value is NSNumber and property class is NSString,format value to NSString
+                [self setValue:[value stringValue] forKey:key];
+            } else {
+                [self setValue:value forKey:key];
+            }
+        } else if ([value isKindOfClass:[NSString class]])   {
+            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
+            if (klass == [NSNumber class]) {
+                // if value is NSString and property class is NSNumber,format value to NSNumber
+                [self setValue:[NSNumber numberWithDouble:[value doubleValue]] forKey:key];
+            } else {
+                [self setValue:value forKey:key];
+            }
         } else {
-            // handle all others
             [self setValue:value forKey:key];
         }
     }];

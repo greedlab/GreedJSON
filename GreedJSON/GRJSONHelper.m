@@ -110,10 +110,15 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
 		const char * name = property_getName(property);
 		if (strcmp(cPropertyName, name) == 0) {
 			free(properties);
-			NSString *className = [NSString stringWithUTF8String:property_getTypeName(property)];
-			[propertyClassByClassAndPropertyName setObject:className forKey:key];
-            //we found the property - we need to free
-			return NSClassFromString(className);
+            const char *charClassName = property_getTypeName(property);
+            if (charClassName) {
+                NSString *className = [NSString stringWithUTF8String:charClassName];
+                [propertyClassByClassAndPropertyName setObject:className forKey:key];
+                //we found the property - we need to free
+                return NSClassFromString(className);
+            } else {
+                return nil;
+            }
 		}
 	}
     free(properties);
