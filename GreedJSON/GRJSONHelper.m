@@ -94,10 +94,14 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
     }
 	
 	NSString *key = [NSString stringWithFormat:@"%@:%@", NSStringFromClass(aClass), propertyName];
-	NSString *value = [propertyClassByClassAndPropertyName objectForKey:key];
+	id value = [propertyClassByClassAndPropertyName objectForKey:key];
 	
 	if (value) {
-		return NSClassFromString(value);
+        if (value == [NSNull null]) {
+            return nil;
+        } else {
+            return NSClassFromString(value);
+        }
 	}
 	
 	unsigned int propertyCount = 0;
@@ -117,6 +121,7 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
                 //we found the property - we need to free
                 return NSClassFromString(className);
             } else {
+                [propertyClassByClassAndPropertyName setObject:[NSNull null] forKey:key];
                 return nil;
             }
 		}

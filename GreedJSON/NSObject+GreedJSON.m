@@ -118,13 +118,25 @@
                 return;
             }
             Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
+
             if (klass == [NSDictionary class]) {
                 [self setValue:value forKey:key];
+            } else if (klass == [NSNumber class]
+                       || klass == [NSString class]
+                       || klass == [NSURL class]) {
+                return;
             } else {
                 [self setValue:[[klass class] gr_objectFromDictionary:value] forKey:key];
             }
         } else if ([value isKindOfClass:[NSArray class]]) { // handle array
             NSArray *array = (NSArray*)value;
+            if (array.count == 0) {
+                return;
+            }
+            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
+            if (klass != [NSArray class]) {
+                return;
+            }
             NSMutableArray *childObjects = [[NSMutableArray alloc] init];
             [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 Class bClass = [obj class];
@@ -151,24 +163,25 @@
             if (childObjects.count) {
                 [self setValue:childObjects forKey:key];
             }
-        } else if ([value isKindOfClass:[NSNumber class]])   {
+        } else if ([value isKindOfClass:[NSNumber class]]) {
             Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
-            if (klass == [NSString class]) {
+            if (klass == [NSNumber class]) {
+                [self setValue:value forKey:key];
+            } else if (klass == [NSString class]) {
                 // if value is NSNumber and property class is NSString,format value to NSString
                 [self setValue:[value stringValue] forKey:key];
-            } else {
-                [self setValue:value forKey:key];
             }
         } else if ([value isKindOfClass:[NSString class]])   {
             Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
-            if (klass == [NSNumber class]) {
+            if (klass == [NSString class]) {
+                [self setValue:value forKey:key];
+            } else if (klass == [NSNumber class]) {
                 // if value is NSString and property class is NSNumber,format value to NSNumber
                 [self setValue:[NSNumber numberWithDouble:[value doubleValue]] forKey:key];
-            } else {
-                [self setValue:value forKey:key];
+            } else if (klass == [NSURL class]) {
+                // if value is NSString and property class is NSURL,format value to NSURL
+                [self setValue:[NSURL URLWithString:value] forKey:key];
             }
-        } else {
-            [self setValue:value forKey:key];
         }
     }];
     return self;
