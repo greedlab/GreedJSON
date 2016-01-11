@@ -123,7 +123,8 @@
                 [self setValue:value forKey:key];
             } else if (klass == [NSNumber class]
                        || klass == [NSString class]
-                       || klass == [NSURL class]) {
+                       || klass == [NSURL class]
+                       || klass == [NSArray class]) {
                 return;
             } else {
                 [self setValue:[[klass class] gr_objectFromDictionary:value] forKey:key];
