@@ -112,13 +112,15 @@
             return;
         }
         
+        Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
+        if (!klass) {
+            return;
+        }
         if ([value isKindOfClass:[NSDictionary class]]) { // handle dictionary
             NSDictionary *dictionary = (NSDictionary*)value;
             if (dictionary.count == 0) {
                 return;
             }
-            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
-
             if (klass == [NSDictionary class]) {
                 [self setValue:value forKey:key];
             } else if (klass == [NSNumber class]
@@ -134,7 +136,6 @@
             if (array.count == 0) {
                 return;
             }
-            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
             if (klass != [NSArray class]) {
                 return;
             }
@@ -165,7 +166,6 @@
                 [self setValue:childObjects forKey:key];
             }
         } else if ([value isKindOfClass:[NSNumber class]]) {
-            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
             if (klass == [NSNumber class]) {
                 [self setValue:value forKey:key];
             } else if (klass == [NSString class]) {
@@ -173,7 +173,6 @@
                 [self setValue:[value stringValue] forKey:key];
             }
         } else if ([value isKindOfClass:[NSString class]])   {
-            Class klass = [GRJSONHelper propertyClassForPropertyName:key ofClass:aClass];
             if (klass == [NSString class]) {
                 [self setValue:value forKey:key];
             } else if (klass == [NSNumber class]) {
