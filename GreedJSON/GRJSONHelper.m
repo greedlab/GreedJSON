@@ -30,8 +30,8 @@ static NSSet *__grFoundationClasses;
 
 @implementation GRJSONHelper : NSObject
 
-static NSMutableDictionary *propertyListByClass;
-static NSMutableDictionary *propertyClassByClassAndPropertyName;
+static NSMutableDictionary <NSString *, NSMutableArray *> *propertyListByClass;
+static NSMutableDictionary <NSString *, NSMutableDictionary *> *propertyClassAndPropertyNameByClass;
 
 + (BOOL)isPropertyReadOnly:(Class)aClass propertyName:(NSString*)propertyName{
     const char * type = property_getAttributes(class_getProperty(aClass, [propertyName UTF8String]));
@@ -87,49 +87,54 @@ static NSMutableDictionary *propertyClassByClassAndPropertyName;
     return propertyNamesArray;
 }
 
++ (NSMutableDictionary <NSString *, NSMutableDictionary *> *)allPropertyClassesInClass:(Class)aClass
+{
+    if (!propertyClassAndPropertyNameByClass) {
+        propertyClassAndPropertyNameByClass = [[NSMutableDictionary alloc] init];
+    }
+    NSString *classKey = NSStringFromClass(aClass);
+    NSMutableDictionary *propertyClassByPropertyName = [propertyClassAndPropertyNameByClass objectForKey:classKey];
+    if (!propertyClassByPropertyName) {
+        propertyClassByPropertyName = [[NSMutableDictionary alloc] init];
+        
+        unsigned int propertyCount = 0;
+        objc_property_t *properties = class_copyPropertyList(aClass, &propertyCount);
+        
+        for (unsigned int i = 0; i < propertyCount; ++i) {
+            objc_property_t property = properties[i];
+            const char *name = property_getName(property);
+            const char *charClassName = property_getTypeName(property);
+            NSString *propertyName = [NSString stringWithUTF8String:name];
+            if (charClassName) {
+                NSString *className = [NSString stringWithUTF8String:charClassName];
+                [propertyClassByPropertyName setObject:className forKey:propertyName];
+            } else {
+                Class className = [NSNumber class];
+                [propertyClassByPropertyName setObject:NSStringFromClass(className) forKey:propertyName];
+            }
+        }
+        [propertyClassAndPropertyNameByClass setObject:propertyClassByPropertyName forKey:classKey];
+        free(properties);
+    }
+    return propertyClassByPropertyName;
+}
+
 + (Class)propertyClassForPropertyName:(NSString *)propertyName ofClass:(Class)aClass
 {
-    if (!propertyClassByClassAndPropertyName) {
-        propertyClassByClassAndPropertyName = [[NSMutableDictionary alloc] init];
+    if (!propertyName || !aClass) {
+        return nil;
     }
-    
-    NSString *key = [NSString stringWithFormat:@"%@:%@", NSStringFromClass(aClass), propertyName];
-    id value = [propertyClassByClassAndPropertyName objectForKey:key];
-    
+    NSMutableDictionary *propertyClassByPropertyName = [self allPropertyClassesInClass:aClass];
+    id value = [propertyClassByPropertyName objectForKey:propertyName];
     if (value) {
         if (value == [NSNull null]) {
             return nil;
         } else {
             return NSClassFromString(value);
         }
+    } else {
+        return [self propertyClassForPropertyName:propertyName ofClass:class_getSuperclass(aClass)];
     }
-    
-    unsigned int propertyCount = 0;
-    objc_property_t *properties = class_copyPropertyList(aClass, &propertyCount);
-    
-    const char * cPropertyName = [propertyName UTF8String];
-    
-    for (unsigned int i = 0; i < propertyCount; ++i) {
-        objc_property_t property = properties[i];
-        const char * name = property_getName(property);
-        if (strcmp(cPropertyName, name) == 0) {
-            free(properties);
-            const char *charClassName = property_getTypeName(property);
-            if (charClassName) {
-                NSString *className = [NSString stringWithUTF8String:charClassName];
-                [propertyClassByClassAndPropertyName setObject:className forKey:key];
-                //we found the property - we need to free
-                return NSClassFromString(className);
-            } else {
-                Class className = [NSNumber class];
-                [propertyClassByClassAndPropertyName setObject:NSStringFromClass(className) forKey:key];
-                return className;
-            }
-        }
-    }
-    free(properties);
-    //this will support traversing the inheritance chain
-    return [self propertyClassForPropertyName:propertyName ofClass:class_getSuperclass(aClass)];
 }
 
 + (NSMutableArray*)allIgnoredPropertyNames:(Class)aClass

@@ -21,7 +21,7 @@
     return self;
 }
 
-+ (NSArray*)gr_ignoredPropertyNames
++ (NSArray<NSString *> *)gr_ignoredPropertyNames
 {
     NSMutableArray *array = [[self gr_propertyNames] mutableCopy];
     [array removeObject:@"base1"];

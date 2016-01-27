@@ -46,7 +46,7 @@
     return NO;
 }
 
-+ (NSArray*)gr_ignoredPropertyNames
++ (NSArray<NSString *> *)gr_ignoredPropertyNames
 {
     NSArray *array = nil;
     Class superClass = class_getSuperclass([self class]);
@@ -56,7 +56,7 @@
     return array;
 }
 
-+ (NSDictionary*)gr_replacedPropertyNames
++ (NSDictionary<NSString *, NSString *> *)gr_replacedPropertyNames
 {
     NSDictionary *dictionary = nil;
     Class superClass = class_getSuperclass([self class]);
@@ -66,7 +66,7 @@
     return dictionary;
 }
 
-+ (NSDictionary *)gr_classInArray
++ (NSDictionary<NSString *, Class > *)gr_classInArray
 {
     NSDictionary *dictionary = nil;
     Class superClass = class_getSuperclass([self class]);
@@ -237,11 +237,9 @@
             }
         }
     }];
-    
     return dic;
 }
 
 #pragma mark - private
-
 
 @end

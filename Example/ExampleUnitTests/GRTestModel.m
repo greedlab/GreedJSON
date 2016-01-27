@@ -27,17 +27,17 @@
     return YES;
 }
 
-+ (NSArray*)gr_ignoredPropertyNames
++ (NSArray<NSString *> *)gr_ignoredPropertyNames
 {
     return @[@"key0"];
 }
 
-+ (NSDictionary*)gr_replacedPropertyNames
++ (NSDictionary<NSString*, NSString*>*)gr_replacedPropertyNames
 {
     return @{@"key4":@"replace_key4"};
 }
 
-+ (NSDictionary *)gr_classInArray
++ (NSDictionary<NSString *, Class > *)gr_classInArray
 {
     return @{@"key2":[GRTestModel class]};;
 }
