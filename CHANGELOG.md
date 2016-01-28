@@ -7,3 +7,4 @@
 * 0.0.8 delete gr_allowedPropertyNames and fix some bug
 * 0.0.9 set value to ni if json string is '[]',because empty will be formated to '[]' in php
 * 0.1.4 if can not get property class,set it to NSNumber
+* 0.1.5 add method `allPropertyClassesInClass:aClass`in`GRJSONHelper`
