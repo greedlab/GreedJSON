@@ -11,8 +11,7 @@
 
 @implementation GRTestModel
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _key1 = @"key1";
@@ -22,24 +21,21 @@
 
 #pragma mark - Property
 
-+ (BOOL)gr_useNullProperty
-{
++ (BOOL)gr_useNullProperty {
     return YES;
 }
 
-+ (NSArray<NSString *> *)gr_ignoredPropertyNames
-{
-    return @[@"key0"];
++ (NSArray<NSString *> *)gr_ignoredPropertyNames {
+    return @[ @"key0" ];
 }
 
-+ (NSDictionary<NSString*, NSString*>*)gr_replacedPropertyNames
-{
-    return @{@"key4":@"replace_key4"};
++ (NSDictionary<NSString *, NSString *> *)gr_replacedPropertyNames {
+    return @{ @"key4" : @"replace_key4" };
 }
 
-+ (NSDictionary<NSString *, Class > *)gr_classInArray
-{
-    return @{@"key2":[GRTestModel class]};;
++ (NSDictionary<NSString *, Class> *)gr_classInArray {
+    return @{ @"key2" : [GRTestModel class] };
+    ;
 }
 
 @end

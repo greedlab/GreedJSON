@@ -254,8 +254,10 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = GR;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = greedlab;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";

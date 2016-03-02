@@ -10,7 +10,7 @@
 
 @interface GRBaseTestModel : NSObject
 
-@property(nonatomic,strong)NSString *base0;
-@property(nonatomic,strong)NSString *base1;
+@property (nonatomic, strong) NSString *base0;
+@property (nonatomic, strong) NSString *base1;
 
 @end

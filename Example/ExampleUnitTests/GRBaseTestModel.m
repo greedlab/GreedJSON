@@ -11,8 +11,7 @@
 
 @implementation GRBaseTestModel
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _base0 = @"base0";
@@ -21,8 +20,7 @@
     return self;
 }
 
-+ (NSArray<NSString *> *)gr_ignoredPropertyNames
-{
++ (NSArray<NSString *> *)gr_ignoredPropertyNames {
     NSMutableArray *array = [[self gr_propertyNames] mutableCopy];
     [array removeObject:@"base1"];
     return array;
