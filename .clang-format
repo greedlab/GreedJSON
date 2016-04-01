@@ -33,3 +33,7 @@ SpacesInParentheses: false
   
 # 不在中括号里加空格  
 SpacesInSquareBrackets: false  
+
+# 是否用tab
+UseTab: Never
+

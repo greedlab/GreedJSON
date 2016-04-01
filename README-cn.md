@@ -1,14 +1,14 @@
 # GreedJSON [![Build Status](https://travis-ci.org/greedlab/GreedJSON.svg?branch=master)](https://travis-ci.org/greedlab/GreedJSON)
 
-parse and format JSON for ios， based on NSJSONSerialization and run time
+利用`NSJSONSerialization `和`run time `实现JSON转模型、模型转JSON
 
-[中文版](README-cn.md)
+[English](README.md)
 
-## Installation
+## 安装
 
 pod 'GreedJSON'
 
-## Usage
+## 使用
 
 ```objc
 #import "GreedJSON.h"
@@ -17,45 +17,45 @@ pod 'GreedJSON'
 ### [NSArray+GreedJSON](https://github.com/greedlab/GreedJSON/blob/master/GreedJSON/NSArray%2BGreedJSON.h)
 
 ```objc
-// NSArray to NSString
+// NSArray 转 NSString
 - (NSString*)gr_JSONString;
-// NSArray to NSData
+// NSArray 转 NSData
 - (NSData*)gr_JSONData;
 ```
 
 ### [NSData+GreedJSON](https://github.com/greedlab/GreedJSON/blob/master/GreedJSON/NSData%2BGreedJSON.h)
 
 ```objc
-// NSData to NSDictionary or NSArray
+// NSData 转 NSDictionary 或 NSArray
 - (__kindof NSObject*)gr_object
 ```
 
 ### [NSDictionary+GreedJSON](https://github.com/greedlab/GreedJSON/blob/master/GreedJSON/NSDictionary%2BGreedJSON.h)
 
 ```objc
-// NSDictionary to NSString
+// NSDictionary 转 NSString
 - (NSString*)gr_JSONString;
-// NSDictionary to NSData
+// NSDictionary 转 NSData
 - (NSData*)gr_JSONData;
 ```
 
 ### [NSString+GreedJSON](https://github.com/greedlab/GreedJSON/blob/master/GreedJSON/NSString%2BGreedJSON.h)
 
 ```objc
-// NSString to NSDictionary or NSArray
+// NSString 转 NSDictionary 或 NSArray
 - (__kindof NSObject*)gr_object
 ```
 
 ### [NSObject+GreedJSON](https://github.com/greedlab/GreedJSON/blob/master/GreedJSON/NSObject%2BGreedJSON.h)
 
 ```objc
-// model to NSDictionary
+// model 转 NSDictionary
 - (__kindof NSObject *)gr_dictionary;
-// NSDictionary to model
+// NSDictionary 转 model
 + (id)gr_objectFromDictionary:(NSDictionary*)dictionary
 ```
 
-## Change Log
+## 更新记录
 
 [CHANGELOG](CHANGELOG.md)
 
