@@ -1,7 +1,7 @@
 {
   "name": "GreedJSON",
-  "version": "0.0.2",
-  "summary": "ios JSON parser based ob  NSJSONSerialization",
+  "version": "0.1.5",
+  "summary": "parse and format JSON for ios",
   "description": "Format NSDictionary,NSArray and NSData to JSONString,or reverse",
   "homepage": "https://github.com/greedlab/GreedJSON",
   "license": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/greedlab/GreedJSON.git",
-    "tag": "0.0.2"
+    "tag": "0.1.5"
   },
   "source_files": [
     "GreedJSON",
