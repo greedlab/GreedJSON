@@ -160,7 +160,11 @@
             }
         } else if ([value isKindOfClass:[NSString class]]) {
             if (klass == [NSString class]) {
-                [self setValue:value forKey:key];
+                if ([NSStringFromClass([value class]) isEqualToString:@"NSTaggedPointerString"]) {
+                    [self setValue:[NSString stringWithString:value] forKey:key];
+                } else {
+                    [self setValue:value forKey:key];
+                }
             } else if (klass == [NSNumber class]) {
                 // if value is NSString and property class is NSNumber,format value to NSNumber
                 [self setValue:[NSNumber numberWithDouble:[value doubleValue]] forKey:key];
