@@ -55,10 +55,6 @@ pod 'GreedJSON'
 + (id)gr_objectFromDictionary:(NSDictionary*)dictionary
 ```
 
-## Change Log
-
-[CHANGELOG](CHANGELOG.md)
-
 ## LICENSE
 
 [MIT](LICENSE)
